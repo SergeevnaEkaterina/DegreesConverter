@@ -17,5 +17,10 @@ public class ConverterController {
         return ConverterService.processCelciumToFarenheit(temperature, response);
     }
 
+    @GetMapping("/farenheitToCelcium")
+    public String convertFarenheitToCelciumTempetarure(@RequestParam("temperature") String temperature, HttpServletResponse response) {
+        return ConverterService.processFarenheitToCelcium(temperature, response);
+    }
+
 
 }
