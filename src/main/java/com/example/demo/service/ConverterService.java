@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class ConverterService {
     public static String processCelciumToFarenheit(String temperature, HttpServletResponse response) {
         String result;
-        Pattern p = Pattern.compile("(-)?\\d.\\d");
+        Pattern p = Pattern.compile("(-)?\\d+.\\d+");
         Matcher matcher = p.matcher(temperature);
         if (!matcher.matches()) {
             result = "Invalid temperature format";
