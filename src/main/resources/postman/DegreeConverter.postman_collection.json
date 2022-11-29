@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "27871e30-6557-4de1-86b3-4c7f01e7fe4a",
+		"name": "DegreeConverter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18439308"
+	},
+	"item": [
+		{
+			"name": "CelciumToFarenheit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/celciumToFarenheit?temperature=15.34",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"celciumToFarenheit"
+					],
+					"query": [
+						{
+							"key": "temperature",
+							"value": "15.34"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FarenheitToCelcium",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/farenheitToCelcium?temperature=8.6",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"farenheitToCelcium"
+					],
+					"query": [
+						{
+							"key": "temperature",
+							"value": "8.6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FarenheitToCelciumArray",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [\r\n\"1.0\",\"-2.432\"\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/farenheitToCelcium/array?sort=asc",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"farenheitToCelcium",
+						"array"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CelciumToFarenheitArray",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [\r\n\"-17.0\",\"-16.5\"\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/celciumToFarenheit/array?sort=desc",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"celciumToFarenheit",
+						"array"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
