@@ -26,13 +26,13 @@ public class ConverterController {
     }
 
     @GetMapping("/farenheitToCelcium/array")
-    public List<String> convertFarenheitToCelciumTempetarureArray(@RequestBody List<String> temperatures, HttpServletResponse response) {
-        return ConverterService.processFarenheitToCelciumArray(temperatures, response);
+    public List<Double> convertFarenheitToCelciumTempetarureArray(@RequestParam(value = "sort", required = false) String sort, @RequestBody List<String> temperatures, HttpServletResponse response) {
+        return ConverterService.processFarenheitToCelciumArray(sort, temperatures, response);
     }
 
     @GetMapping("/celciumToFarenheit/array")
-    public List<String> convertCelciumToFarenheitTempetarureArray(@RequestBody List<String> temperatures, HttpServletResponse response) {
-        return ConverterService.processCelciumToFarenheitArray(temperatures, response);
+    public List<Double> convertCelciumToFarenheitTempetarureArray(@RequestParam(value = "sort", required = false) String sort, @RequestBody List<String> temperatures, HttpServletResponse response) {
+        return ConverterService.processCelciumToFarenheitArray(sort, temperatures, response);
     }
 
 
