@@ -13,11 +13,27 @@ import java.util.regex.Pattern;
 @Service
 public class ConverterService {
     public static String processCelciumToFarenheit(String temperature, HttpServletResponse response) {
-        return validateInputTemperature(temperature, convertToFarenheit(temperature), response);
+        String result;
+        String validation = validateInputTemperature(temperature);
+        if (validation == null) {
+            result = convertToFarenheit(temperature);
+        } else {
+            response.setStatus(400);
+            result = validation;
+        }
+        return result;
     }
 
     public static String processFarenheitToCelcium(String temperature, HttpServletResponse response) {
-        return validateInputTemperature(temperature, convertToCelcium(temperature), response);
+        String result;
+        String validation = validateInputTemperature(temperature);
+        if (validation == null) {
+            result = convertToCelcium(temperature);
+        } else {
+            response.setStatus(400);
+            result = validation;
+        }
+        return result;
     }
 
     public static List<Double> processFarenheitToCelciumArray(String sort, List<String> temperatureArray, HttpServletResponse response) {
@@ -53,14 +69,13 @@ public class ConverterService {
         return String.valueOf((Double.parseDouble(temperature) - 32) / 1.8);
     }
 
-    public static String validateInputTemperature(String temperature, String convertedTemperature, HttpServletResponse response) {
-        String result;
+    public static String validateInputTemperature(String temperature) {
+        String result = null;
         Pattern p = Pattern.compile("(-)?\\d+.\\d+");
         Matcher matcher = p.matcher(temperature);
         if (!matcher.matches()) {
             result = "Invalid temperature format";
-            response.setStatus(400);
-        } else result = convertedTemperature;
+        }
         return result;
     }
 
