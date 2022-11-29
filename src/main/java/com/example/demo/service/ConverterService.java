@@ -4,7 +4,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,7 +20,7 @@ public class ConverterService {
         return validateInputTemperature(temperature, convertToCelcium(temperature), response);
     }
 
-    public static List<String> processFarenheitToCelciumArray(List<String> temperatureArray, HttpServletResponse response) {
+    public static List<Double> processFarenheitToCelciumArray(String sort, List<String> temperatureArray, HttpServletResponse response) {
         List<String> convertedArray = new ArrayList<>();
         String validation = validateInputArrayTemperature(temperatureArray);
         if (validation == null) {
@@ -27,10 +29,10 @@ public class ConverterService {
             response.setStatus(400);
             convertedArray.add(validation);
         }
-        return convertedArray;
+        return sort(sort, convertedArray);
     }
 
-    public static List<String> processCelciumToFarenheitArray(List<String> temperatureArray, HttpServletResponse response) {
+    public static List<Double> processCelciumToFarenheitArray(String sort, List<String> temperatureArray, HttpServletResponse response) {
         List<String> convertedArray = new ArrayList<>();
         String validation = validateInputArrayTemperature(temperatureArray);
         if (validation == null) {
@@ -39,7 +41,7 @@ public class ConverterService {
             response.setStatus(400);
             convertedArray.add(validation);
         }
-        return convertedArray;
+        return sort(sort, convertedArray);
     }
 
 
@@ -72,6 +74,19 @@ public class ConverterService {
             }
         }
         return result;
+    }
+
+    public static List<Double> sort(String direction, List<String> array) {
+        List<Double> castListElementsToDouble = new ArrayList<>(array.stream()
+                .map(Double::parseDouble).toList());
+        if (direction != null && !direction.isEmpty()) {
+            if (Objects.equals(direction.toLowerCase(), "desc")) {
+                castListElementsToDouble.sort(Collections.reverseOrder());
+            } else if (Objects.equals(direction.toLowerCase(), "asc")) {
+                Collections.sort(castListElementsToDouble);
+            }
+        }
+        return castListElementsToDouble;
     }
 
 }
