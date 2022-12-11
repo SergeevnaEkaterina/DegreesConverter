@@ -1,3 +1,8 @@
+```main:```
+![badge](https://github.com/SergeevnaEkaterina/DegreesConverter/actions/workflows/mavenTests.yml/badge.svg?branch=main)
+```develop:```
+![badge](https://github.com/SergeevnaEkaterina/DegreesConverter/actions/workflows/mavenTests.yml/badge.svg?branch=develop)
+
 # DegreesConverter
 Service, that converts Celcium degrees to Farenheit.
 Input value is number in Celcium degrees measurement, output value is a converted temperature in Farenheit measurement system.
